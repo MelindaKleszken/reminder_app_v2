@@ -1,5 +1,6 @@
 const figlet = require('figlet');
 const inquirer = require('inquirer');
+const chalk = require('chalk');
 const {addNote, listNotes, removeNote} = require("../utils/notes");
 
 
@@ -25,7 +26,7 @@ const removeQuestion = [
 ]
 
 const main = () => {
-    console.log(figlet.textSync('Notes App'));
+    console.log(chalk.blue(figlet.textSync('Notes App')));
     console.log("start of my app");
     app();
 };
@@ -42,7 +43,7 @@ const app = async () => {
         app() ;
 
     } else if (answers.options == "remove") {
-        listNotes();
+        listNotes()
         const answer = await inquirer.prompt(removeQuestion);
         removeNote(answer.remove);
         app() ;

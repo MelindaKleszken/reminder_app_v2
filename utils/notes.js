@@ -1,4 +1,5 @@
 const fs = require("fs");
+const chalk = require('chalk');
 
 const loadNotes = () => {
     try {
@@ -13,6 +14,11 @@ const loadNotes = () => {
 const addNote = (myNote)=> {
     const allNotes = loadNotes();
     allNotes.push({reminder: myNote});
+    console.log(
+        chalk.green(`
+      Added new note: ${myNote}
+      `)
+      );
     saveNotes(allNotes);
 };
 
