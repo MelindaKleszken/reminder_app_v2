@@ -20,14 +20,18 @@ const addQuestion = [
 
 const removeQuestion = [
     {type: 'number',
-    name:'add', 
+    name:'remove', 
     message:'what would you like to remove Please type a number'
     }
 ]
 
 const main = () => {
-    console.log(chalk.blue(figlet.textSync('Notes App')));
-    console.log("start of my app");
+    console.log(chalk.blue(figlet.textSync('Notes App',  {
+        font: 'Ghost',
+        horizontalLayout: 'default',
+        verticalLayout: 'default',
+        width: 100,
+        whitespaceBreak: true})));
     app();
 };
 
