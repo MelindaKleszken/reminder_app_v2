@@ -17,6 +17,13 @@ const addQuestion = [
     }
 ]
 
+const removeQuestion = [
+    {type: 'number',
+    name:'add', 
+    message:'what would you like to remove Please type a number'
+    }
+]
+
 const main = () => {
     console.log(figlet.textSync('Notes App'));
     console.log("start of my app");
@@ -35,7 +42,9 @@ const app = async () => {
         app() ;
 
     } else if (answers.options == "remove") {
-        removeNote();
+        listNotes();
+        const answer = await inquirer.prompt(removeQuestion);
+        removeNote(answer.remove);
         app() ;
 
     } else if (answers.options == "exit") {

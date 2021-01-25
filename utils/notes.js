@@ -10,7 +10,7 @@ const loadNotes = () => {
     }
 };
 
-const addNote = myNote => {
+const addNote = (myNote)=> {
     const allNotes = loadNotes();
     allNotes.push({reminder: myNote});
     saveNotes(allNotes);
@@ -28,14 +28,19 @@ const listNotes = () => {
     });
 };
 
-const removeNote = noteToDelete => {
+const removeNote = (noteToDelete) => {
     const allNotes = loadNotes();
 
-    const notesToKeep = allNotes.filter(note => {
-        return note.reminder != noteToDelete;
-    });
+    try {
+        const removedItem = allNotes.splice(noteToDelete - 1, 1);
+        console.log(`
+        succesfully removed ${removedItem[0].reminder}
+        `);
+    } catch (error) {
+        console.log('number out of range')
+    }
 
-    saveNotes(notesToKeep);
+    saveNotes(allNotes);
 };
 
 module.exports = {
